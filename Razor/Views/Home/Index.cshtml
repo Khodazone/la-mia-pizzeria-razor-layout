@@ -1,8 +1,173 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+
+    <p>
+        <strong>
+            1. Dichiarare una variabile valorizzandola con il nostro nome.
+            Dichiarare un'altra variabile valorizzandola con il nostro cognome.
+            Stampare il nostro nome e cognome all'interno di un tag h2.
+        </strong>
+    </p>
+
+    @{
+        string myName = "Davud";
+        string mySurname = "Khodaei Namin";
+    }
+
+    <h2>Mi chiamo @myName @mySurname</h2>
+
+</div>
+
+<div>
+
+    <p>
+        <strong>
+            2. Creare una funzione che stampa la somma dei numeri che vanno da 1 a n.
+            (con n passato come parametro - n incluso)
+            Stampare dentro uno span il risultato.
+        </strong>
+    </p>
+
+    @{
+        int sumOfNumbers(int n)
+        {
+            int sum = 0;
+
+            for (int i = 1; i <= n; i++)
+            {
+                sum += i;
+            }
+            return sum;
+        }
+    }
+
+    <span>@sumOfNumbers(1)</span>
+
+</div>
+
+<div>
+
+    <p>
+        <strong>
+            3. Contare quante volte la lettera a è presente nella frase 
+            "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina.
+        </strong>
+    </p>
+
+    @{
+        string phrase = "nel mezzo del cammin di nostra vita";
+        int count = 0;
+        foreach (char character in phrase)
+        {
+            if (character == 'a')
+            {
+                count++;
+            }
+        }
+    }
+
+    <span>La lettera "a" compare @count volte.</span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+    <p>
+        <strong>
+            3. Creare un array di stringhe contenenti nomi di persona e stampare questo array in pagina.
+        </strong>
+    </p>
+
+    @{
+        string[] nomiPersona = { "Umberto", "Jordan", "Loreta", "Ariel" };
+    }
+
+    <ul>
+        @{
+            foreach (string nome in nomiPersona)
+            {
+                <li>@nome</li>
+            }
+        }
+    </ul>
+
+</div>
+
+<div>
+    <p>
+        <strong>
+            4. Creare una List<int> di 20 numeri interi (generati random da 1 a 100, 1 e 100 inclusi) e mostrare in pagina solo i numeri maggiori di 30
+        </strong>
+    </p>
+
+    @{
+        Random random = new Random();
+        List<int> numeriInteriRandom = new List<int>();
+
+        for (int i = 0; i < 20; i++)
+        {
+            int numero = random.Next(1, 101);
+            numeriInteriRandom.Add(numero);
+        }
+    }
+
+
+    <ul>
+        @{
+            foreach (int n in numeriInteriRandom)
+            {
+                if (n > 30)
+                {
+                    <li>@n</li>
+                }
+            }
+        }
+    </ul>
+
+
+
+
+</div>
+
+<div>
+    <p>
+        <strong>
+            5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime)
+        </strong>
+    </p>
+
+    <p>@DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
+
+</div>
+
+<div>
+    <p>
+        <strong>
+            6. Stampare in pagina la data di domani (usando la classe DateTime)
+        </strong>
+    </p>
+
+    <p>@DateTime.Today.AddDays(10).ToShortDateString()</p>
+
 </div>
