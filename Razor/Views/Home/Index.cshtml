@@ -73,71 +73,31 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div>
+
     <p>
         <strong>
-            3. Creare un array di stringhe contenenti nomi di persona e stampare questo array in pagina.
-        </strong>
-    </p>
-
-    @{
-        string[] nomiPersona = { "Umberto", "Jordan", "Loreta", "Ariel" };
-    }
-
-    <ul>
-        @{
-            foreach (string nome in nomiPersona)
-            {
-                <li>@nome</li>
-            }
-        }
-    </ul>
-
-</div>
-
-<div>
-    <p>
-        <strong>
-            4. Creare una List<int> di 20 numeri interi (generati random da 1 a 100, 1 e 100 inclusi) e mostrare in pagina solo i numeri maggiori di 30
+            4. Creare una List<int> di 20 numeri interi (generati random da 1 a 90, 1 e 90 inclusi).
+            Mostrare in pagina solo i numeri compresi tra 20 e 70.
         </strong>
     </p>
 
     @{
         Random random = new Random();
-        List<int> numeriInteriRandom = new List<int>();
+        List<int> randomNumbers = new List<int>();
 
         for (int i = 0; i < 20; i++)
         {
-            int numero = random.Next(1, 101);
-            numeriInteriRandom.Add(numero);
+            int number = random.Next(1, 91);
+            randomNumbers.Add(number);
         }
     }
 
-
     <ul>
         @{
-            foreach (int n in numeriInteriRandom)
+            foreach (int n in randomNumbers)
             {
-                if (n > 30)
+                if (n >= 20 && n <= 70)
                 {
                     <li>@n</li>
                 }
@@ -145,29 +105,34 @@
         }
     </ul>
 
+</div>
 
+<div>
+    <p>
+        <strong>
+            5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) 
+            con il formato anno-mese-giorno ore:minuti:secondi
+        </strong>
+    </p>
 
+    @{
+        <p>@DateTime.Now.ToString("yyyy:MM:dd HH:mm:ss")</p>
+    }
 
 </div>
 
 <div>
     <p>
         <strong>
-            5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime)
+            6. Partendo dalla data di oggi (usando la classe DateTime) stampare in pagina
+            a. la data di 7 giorni fa
+            b. che giorno della settimana è oggi, il risultato dovrà essere il nome del giorno 
+            (Lunedì, Martedì, ...)
+            c. che giorno della settimana sarà nello stesso giorno e mese di oggi ma tra un anno, 
+            il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
         </strong>
     </p>
 
-    <p>@DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
-
-</div>
-
-<div>
-    <p>
-        <strong>
-            6. Stampare in pagina la data di domani (usando la classe DateTime)
-        </strong>
-    </p>
-
-    <p>@DateTime.Today.AddDays(10).ToShortDateString()</p>
+    <p>@DateTime.Today.AddDays(-7).ToShortDateString()</p>
 
 </div>
